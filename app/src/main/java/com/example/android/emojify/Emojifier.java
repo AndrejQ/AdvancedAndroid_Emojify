@@ -61,8 +61,9 @@ class Emojifier {
                 Face face = faces.valueAt(i);
 
                 // Log the classification probabilities for each face.
-                getClassifications(face);
+                whichEmoji(face);
                 // TODO (6): Change the call to getClassifications to whichEmoji() to log the appropriate emoji for the facial expression.
+
             }
 
         }
@@ -78,7 +79,7 @@ class Emojifier {
      *
      * @param face The face to get the classification probabilities.
      */
-    private static void getClassifications(Face face){
+    private static void whichEmoji(Face face){
         // TODO (2): Change the name of the getClassifications() method to whichEmoji() (also change the log statements)
         // Log all the probabilities
         Log.d(LOG_TAG, "getClassifications: smilingProb = " + face.getIsSmilingProbability());
@@ -88,10 +89,21 @@ class Emojifier {
                 + face.getIsRightEyeOpenProbability());
 
         // TODO (3): Create threshold constants for a person smiling, and and eye being open by taking pictures of yourself and your friends and noting the logs.
+        Emoji emoji;
         // TODO (4): Create 3 boolean variables to track the state of the facial expression based on the thresholds you set in the previous step: smiling, left eye closed, right eye closed.
+        float smiling = 0.7f;
         // TODO (5): Create an if/else system that selects the appropriate emoji based on the above booleans and log the result.
+        if (face.getIsSmilingProbability() > smiling){
+            emoji = Emoji.SMILING;
+        } else {
+            emoji = Emoji.FROWNING;
+        }
     }
 
 
     // TODO (1): Create an enum class called Emoji that contains all the possible emoji you can make (smiling, frowning, left wink, right wink, left wink frowning, right wink frowning, closed eye smiling, close eye frowning).
+    enum Emoji{
+        SMILING,
+        FROWNING
+    }
 }
