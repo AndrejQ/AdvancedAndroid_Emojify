@@ -192,7 +192,7 @@ class Emojifier {
                 backgroundBitmap.getHeight(), backgroundBitmap.getConfig());
 
         // Scale the emoji so it looks better on the face
-        float scaleFactor = EMOJI_SCALE_FACTOR;
+        float scaleFactor = 0.9f;
 
         // Determine the size of the emoji to match the width of the face and preserve aspect ratio
         int newEmojiWidth = (int) (face.getWidth() * scaleFactor);
